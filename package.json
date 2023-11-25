@@ -1,0 +1,32 @@
+{
+  "name": "websockets-prototype-amplication",
+  "version": "1.0.0",
+  "description": "This is a sample project made during amplication octernship to research on websockets integration.",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shurtu-gal/websockets-prototype-amplication.git"
+  },
+  "keywords": [
+    "Websockets",
+    "NestJS",
+    "Amplication",
+    "Backend",
+    "Projects"
+  ],
+  "author": "Ashish Padhy <100484401+Shurtu-gal@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shurtu-gal/websockets-prototype-amplication/issues"
+  },
+  "homepage": "https://github.com/Shurtu-gal/websockets-prototype-amplication#readme",
+  "workspaces": [
+    "**/*"
+  ]
+}
