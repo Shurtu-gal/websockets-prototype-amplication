@@ -9,6 +9,7 @@ import {
   swaggerDocumentOptions,
   swaggerSetupOptions,
 } from "./swagger";
+import { IoAdapter } from "@nestjs/platform-socket.io";
 
 const { PORT = 3000 } = process.env;
 
@@ -51,6 +52,8 @@ async function main() {
 
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new HttpExceptionFilter(httpAdapter));
+
+  app.useWebSocketAdapter(new IoAdapter(app));
 
   void app.listen(PORT);
 

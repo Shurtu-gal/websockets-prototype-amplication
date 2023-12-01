@@ -11,8 +11,9 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { Module } from "@nestjs/common";
 import { ACLModule } from "../../auth/acl.module";
+import { WebsocketsModule } from "../../providers/websockets/websockets.module";
 @Module({
-  imports: [ACLModule],
+  imports: [ACLModule, WebsocketsModule],
   exports: [ACLModule],
 })
 export class OrganizationModuleBase {}

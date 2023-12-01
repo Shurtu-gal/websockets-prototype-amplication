@@ -31,11 +31,13 @@ import { User } from "../../user/base/User";
 import { CustomerFindManyArgs } from "../../customer/base/CustomerFindManyArgs";
 import { Customer } from "../../customer/base/Customer";
 import { OrganizationService } from "../organization.service";
+import { WebSocketGateway } from "src/providers/websockets/websockets.gateway";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Organization)
 export class OrganizationResolverBase {
   constructor(
     protected readonly service: OrganizationService,
+    protected readonly websocketService: WebSocketGateway,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
@@ -94,10 +96,13 @@ export class OrganizationResolverBase {
   async createOrganization(
     @graphql.Args() args: CreateOrganizationArgs
   ): Promise<Organization> {
-    return await this.service.create({
+    const organization = await this.service.create({
       ...args,
       data: args.data,
     });
+
+    this.websocketService.sendNotification("Organization has been created");
+    return organization;
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)

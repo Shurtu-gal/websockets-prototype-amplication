@@ -30,6 +30,8 @@ import { EmptyCreate } from "./empty/EmptyCreate";
 import { EmptyEdit } from "./empty/EmptyEdit";
 import { EmptyShow } from "./empty/EmptyShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
+import OrgSaga from "./organization/OrgSaga";
+import WebsocketSaga from "./websockets/saga";
 
 const App = (): React.ReactElement => {
   const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
@@ -54,6 +56,7 @@ const App = (): React.ReactElement => {
         theme={theme}
         dashboard={Dashboard}
         loginPage={Login}
+        customSagas={[OrgSaga, WebsocketSaga]}
       >
         <Resource
           name="User"
